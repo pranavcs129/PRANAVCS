@@ -95,16 +95,24 @@ export function runIdentityReveal(pcsEl, nameEl, filterNodes = {}, orbEl = null,
       const pcsC = pcsEl.querySelector('.pcs-c');
       const pcsS = pcsEl.querySelector('.pcs-s');
 
+      const namePEl = nameEl.querySelector('.char-p');
+      const nameCEl = nameEl.querySelector('.char-c');
+      const nameSEl = nameEl.querySelector('.char-s');
+
+      if (!pcsP || !pcsC || !pcsS || !namePEl || !nameCEl || !nameSEl) {
+        gsap.set(nameEl, { visibility: 'visible', opacity: 1, filter: 'none' });
+        gsap.set(nameEl.querySelectorAll('.nc'), { opacity: 1, x: 0, y: 0, scaleX: 1, scaleY: 1 });
+        gsap.set(pcsEl, { opacity: 0, visibility: 'hidden' });
+        resolve();
+        return;
+      }
+
       const fromP = pcsP.getBoundingClientRect();
       const fromC = pcsC.getBoundingClientRect();
       const fromS = pcsS.getBoundingClientRect();
 
       // Make name layer renderable for measurement
-      gsap.set(nameEl, { visibility: 'visible' });
-
-      const namePEl = nameEl.querySelector('.char-p');
-      const nameCEl = nameEl.querySelector('.char-c');
-      const nameSEl = nameEl.querySelector('.char-s');
+      gsap.set(nameEl, { visibility: 'visible', opacity: 1 });
 
       const toP = namePEl.getBoundingClientRect();
       const toC = nameCEl.getBoundingClientRect();
@@ -114,12 +122,23 @@ export function runIdentityReveal(pcsEl, nameEl, filterNodes = {}, orbEl = null,
       const fontHeight = toP.height || 120;
       const peakScale = Math.round(Math.min(26, Math.max(10, fontHeight * 0.13)));
 
+      const safeDiv = (num, den, fallback = 1) => {
+        if (!den || !isFinite(num) || !isFinite(den) || den === 0) return fallback;
+        const res = num / den;
+        return isFinite(res) && res > 0 ? res : fallback;
+      };
+      const safeDelta = (a, b) => {
+        const d = a - b;
+        return isFinite(d) ? d : 0;
+      };
+
       // Apply FLIP transforms: anchors look identical to PCS mark positions
       const applyFlip = (from, to, el) => {
-        const scaleX = from.width  / to.width;
-        const scaleY = from.height / to.height;
-        const x = (from.left + from.width  * 0.5) - (to.left + to.width  * 0.5);
-        const y = (from.top  + from.height * 0.5) - (to.top  + to.height * 0.5);
+        if (!el || !from || !to) return;
+        const scaleX = safeDiv(from.width, to.width, 1);
+        const scaleY = safeDiv(from.height, to.height, 1);
+        const x = safeDelta(from.left + from.width * 0.5, to.left + to.width * 0.5);
+        const y = safeDelta(from.top + from.height * 0.5, to.top + to.height * 0.5);
         gsap.set(el, { x, y, scaleX, scaleY, skewX: 0, opacity: 1, transformOrigin: '50% 50%' });
       };
 
@@ -140,8 +159,29 @@ export function runIdentityReveal(pcsEl, nameEl, filterNodes = {}, orbEl = null,
       /* ── 5. Optical Fluid Morph + Atmospheric Orb Timeline ── */
       const morphTl = gsap.timeline({
         onComplete: () => {
-          // Final state: 100% clean and sharp text
-          if (nameEl) nameEl.style.filter = 'none';
+          // Explicit final settled state: 100% clean and sharp text
+          if (nameEl) {
+            nameEl.style.filter = 'none';
+            gsap.set(nameEl, {
+              opacity: 1,
+              visibility: 'visible',
+              clearProps: 'transform,filter',
+            });
+            nameEl.style.opacity = '1';
+            nameEl.style.visibility = 'visible';
+            nameEl.style.pointerEvents = 'auto';
+            nameEl.style.zIndex = '2';
+
+            const allChars = nameEl.querySelectorAll('.nc');
+            gsap.set(allChars, {
+              opacity: 1,
+              x: 0,
+              y: 0,
+              scaleX: 1,
+              scaleY: 1,
+              clearProps: 'transform',
+            });
+          }
           if (dispEl) dispEl.setAttribute('scale', '0');
           if (blurEl) blurEl.setAttribute('stdDeviation', '0');
           resolve();

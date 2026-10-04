@@ -196,13 +196,23 @@ export default function Orb({
 
     let renderer;
     try {
+      const testCanvas = document.createElement('canvas');
+      const testGl = testCanvas.getContext('webgl2') || testCanvas.getContext('webgl');
+      if (!testGl) {
+        console.warn('Orb: WebGL context not available on this device.');
+        return;
+      }
       renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
     } catch (e) {
       console.warn('Orb: WebGL initialization failed', e);
       return;
     }
 
-    const gl = renderer.gl;
+    const gl = renderer?.gl;
+    if (!gl) {
+      console.warn('Orb: WebGL context not available.');
+      return;
+    }
     gl.clearColor(0, 0, 0, 0);
     container.appendChild(gl.canvas);
 

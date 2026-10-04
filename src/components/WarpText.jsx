@@ -269,6 +269,12 @@ const WarpText = ({
     const startTime = performance.now();
 
     try {
+      const testCanvas = document.createElement('canvas');
+      const testGl = testCanvas.getContext('webgl2') || testCanvas.getContext('webgl');
+      if (!testGl) {
+        console.warn('WarpText: WebGL context not available on this device.');
+        return undefined;
+      }
       renderer = new Renderer({
         webgl: 2, alpha: true, premultipliedAlpha: false, antialias: true,
         dpr: Math.min(window.devicePixelRatio || 1, 2),
@@ -276,6 +282,11 @@ const WarpText = ({
       gl = renderer.gl;
     } catch (error) {
       console.warn('WarpText: WebGL could not be initialized.', error);
+      return undefined;
+    }
+
+    if (!gl) {
+      console.warn('WarpText: WebGL context not available.');
       return undefined;
     }
 

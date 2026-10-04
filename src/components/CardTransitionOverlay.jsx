@@ -64,11 +64,18 @@ export default function CardTransitionOverlay() {
       }
 
       // Step 3: Expand overlay toward viewport
+      let entryDone = false;
+      const onEntryDone = () => {
+        if (entryDone) return;
+        entryDone = true;
+        completeCardEntry();
+      };
+
       const tl = gsap.timeline({
-        onComplete: () => {
-          completeCardEntry();
-        },
+        onComplete: onEntryDone,
       });
+
+      const entryFallbackTimer = setTimeout(onEntryDone, 850);
 
       tl.to(overlay, {
         top: 0,
@@ -98,6 +105,11 @@ export default function CardTransitionOverlay() {
           ease: 'power2.out',
         }, 0.2);
       }
+
+      return () => {
+        clearTimeout(entryFallbackTimer);
+        tl.kill();
+      };
     } else if (phase === 'collapsing') {
       const returnRect = sourceCard ? sourceCard.getBoundingClientRect() : sourceRect;
 
@@ -107,28 +119,35 @@ export default function CardTransitionOverlay() {
         return;
       }
 
-      const tl = gsap.timeline({
-        onComplete: () => {
-          if (sourceCard) {
-            sourceCard.style.opacity = '1';
-          }
-          // Restore surrounding cards and header
-          gsap.to(surroundingCards, {
+      let exitDone = false;
+      const onExitDone = () => {
+        if (exitDone) return;
+        exitDone = true;
+        if (sourceCard) {
+          sourceCard.style.opacity = '1';
+        }
+        // Restore surrounding cards and header
+        gsap.to(surroundingCards, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.35,
+          ease: 'power2.out',
+        });
+        if (bentoHeader) {
+          gsap.to(bentoHeader, {
             opacity: 1,
-            scale: 1,
             duration: 0.35,
             ease: 'power2.out',
           });
-          if (bentoHeader) {
-            gsap.to(bentoHeader, {
-              opacity: 1,
-              duration: 0.35,
-              ease: 'power2.out',
-            });
-          }
-          completeCardExit();
-        },
+        }
+        completeCardExit();
+      };
+
+      const tl = gsap.timeline({
+        onComplete: onExitDone,
       });
+
+      const exitFallbackTimer = setTimeout(onExitDone, 750);
 
       tl.to(overlay, {
         top: returnRect.top,
@@ -156,6 +175,11 @@ export default function CardTransitionOverlay() {
           ease: 'power2.in',
         }, 0.2);
       }
+
+      return () => {
+        clearTimeout(exitFallbackTimer);
+        tl.kill();
+      };
     }
   }, [phase, cardId, cardData, sourceRect, completeCardEntry, completeCardExit]);
 

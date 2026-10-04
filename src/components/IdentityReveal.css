@@ -100,7 +100,7 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 2;
   transform-origin: 50% 50%;
   will-change: transform, filter;
@@ -138,7 +138,7 @@
 /* ─────────────────────────────────────────────────────────────────
    WARP LAYER (Layer C)
    React Bits WarpText WebGL canvas.
-   Activated once the morph settles.
+   Activated smoothly on cursor hover over identity stage.
 ───────────────────────────────────────────────────────────────── */
 .warp-layer {
   position: absolute;
@@ -155,8 +155,11 @@
 }
 
 .warp-layer--active {
-  opacity: 1;
   pointer-events: auto;
+}
+
+.identity-stage:hover .warp-layer--active {
+  opacity: 1;
 }
 
 /* Ensure the inner WarpText takes full width of the stage */

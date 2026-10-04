@@ -66,52 +66,73 @@ export default function IdentityReveal() {
     if (!pcs || !name) return;
 
     let cancelled = false;
-    const tweens = [];
 
-    runIdentityReveal(pcs, name, filterNodes, orb, tweens).then(() => {
-      if (cancelled) return;
+    // Use GSAP Context for production-safe scoping and deterministic cleanup
+    const ctx = gsap.context(() => {
+      const tweens = [];
 
-      // Morph has fully completed and settled.
-      // Activate WarpText cursor interaction.
-      setWarpActive(true);
+      // Await web fonts ready (with safe timeout fallback) so layout and FLIP coordinates are deterministic
+      const fontCheck = document.fonts?.ready
+        ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 600))])
+        : Promise.resolve();
 
-      if (warp && name) {
-        gsap.to(warp, {
-          opacity: 1,
-          duration: 0.35,
-          ease: 'power2.out',
-          onStart: () => {
-            warp.style.pointerEvents = 'auto';
-          },
+      fontCheck.then(() => {
+        if (cancelled) return;
+
+        runIdentityReveal(pcs, name, filterNodes, orb, tweens).then(() => {
+          if (cancelled) return;
+
+          // Final settled state is explicitly:
+          // PRANAV C S: opacity: 1, visibility: visible, transform: none, z-index: above background, pointer-events: auto
+          gsap.set(name, {
+            opacity: 1,
+            visibility: 'visible',
+            clearProps: 'transform,filter',
+          });
+          name.style.opacity = '1';
+          name.style.visibility = 'visible';
+          name.style.pointerEvents = 'auto';
+          name.style.zIndex = '2';
+
+          const allChars = name.querySelectorAll('.nc');
+          gsap.set(allChars, {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            scaleX: 1,
+            scaleY: 1,
+            clearProps: 'transform',
+          });
+
+          // Activate WarpText interaction on hover
+          setWarpActive(true);
+
+          // Deliberate entrance:
+          // PRANAV C S settles → short pause → sentence subtly reveals → settles → subtle glow begins
+          revealPersonalSentence(sentence, null, tweens);
+
+          // Fade in minimal hairline scroll cue
+          revealScrollCue(cue, tweens);
+
+          // Set up scroll exit on stage, atmospheric orb, and personal sentence
+          const triggers = setupScrollExit(panel, stage, cue, buffer, orb, sentence);
+          tweens.push(...triggers.map(st => ({ kill: () => st.kill() })));
         });
-        gsap.to(name, {
-          opacity: 0,
-          duration: 0.35,
-          ease: 'power2.out',
-        });
-      }
-
-      // Deliberate entrance:
-      // PRANAV C S settles → short pause → sentence subtly reveals → settles → subtle glow begins
-      revealPersonalSentence(sentence, null, tweens);
-
-      // Fade in minimal hairline scroll cue
-      revealScrollCue(cue, tweens);
-
-      // Set up scroll exit on stage, atmospheric orb, and personal sentence
-      const triggers = setupScrollExit(panel, stage, cue, buffer, orb, sentence);
-      tweens.push(...triggers.map(st => ({ kill: () => st.kill() })));
-    });
+      });
+    }, panelRef);
 
     const dispEl = dispRef.current;
     const blurEl = blurRef.current;
 
     return () => {
       cancelled = true;
-      tweens.forEach(t => t?.kill?.());
-      gsap.set([pcs, name, cue, stage, orb, sentence], { clearProps: 'all' });
+      ctx.revert();
       if (sentence) sentence.classList.remove('personal-sentence--glowing');
-      if (name) name.style.filter = 'none';
+      if (name) {
+        name.style.filter = 'none';
+        name.style.opacity = '1';
+        name.style.visibility = 'visible';
+      }
       if (dispEl) dispEl.setAttribute('scale', '0');
       if (blurEl) blurEl.setAttribute('stdDeviation', '0');
     };
@@ -141,15 +162,10 @@ export default function IdentityReveal() {
         aria-hidden="true"
         style={{
           position: 'absolute',
-          width: '1px',
-          height: '1px',
-          padding: 0,
-          margin: '-1px',
-          overflow: 'hidden',
-          clip: 'rect(0, 0, 0, 0)',
-          whiteSpace: 'nowrap',
-          border: 0,
+          width: 0,
+          height: 0,
           pointerEvents: 'none',
+          opacity: 0,
         }}
       >
         <defs>
