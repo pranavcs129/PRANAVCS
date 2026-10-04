@@ -1,0 +1,62 @@
+@import './sharedSkillPage.css';
+
+.photography-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  background: #050208;
+}
+
+.photography-nav {
+  position: relative;
+  z-index: 10;
+  padding: clamp(16px, 2.5vh, 26px) clamp(20px, 4vw, 48px) clamp(6px, 1vh, 12px);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  max-width: 100%;
+}
+
+.photography-hero {
+  position: relative;
+  z-index: 10;
+  padding: 0 clamp(20px, 4vw, 48px);
+  margin-bottom: clamp(8px, 1.5vh, 18px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.photography-hero__title {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(2rem, 4.2vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--off-white, #f8f5ff);
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+}
+
+.photography-hero__quote {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(0.92rem, 1.2vw, 1.12rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(220, 205, 190, 0.72);
+  margin: 0;
+  max-width: 580px;
+}
+
+/* DriftWall fills the remaining viewport as the primary visual archive */
+.photography-wall-wrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  z-index: 5;
+}

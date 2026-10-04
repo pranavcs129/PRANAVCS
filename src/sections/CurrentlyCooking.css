@@ -1,0 +1,182 @@
+/* ─────────────────────────────────────────────────────────────────
+   CURRENTLY COOKING — SECTION STYLES
+   Minimal, dark, typography-driven Sora aesthetic.
+   Keeps only CURRENTLY COOKING, rising steam plumes, and floating particles.
+───────────────────────────────────────────────────────────────── */
+
+.cooking-section {
+  position: relative;
+  width: 100%;
+  height: 180vh;
+  background: var(--black);
+  color: var(--off-white);
+  overflow: clip;
+  z-index: 12;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PINNED STAGE
+───────────────────────────────────────────────────────────────── */
+.cooking-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Common layer container */
+.cooking-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   CURRENTLY COOKING CONTENT
+───────────────────────────────────────────────────────────────── */
+.state-cooking {
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+.cooking-title-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(72vw, 1080px);
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+/* "CURRENTLY" */
+.cooking-word-currently {
+  font-family: var(--font-sora);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 5.2vw, 5.8rem);
+  letter-spacing: 0.14em;
+  line-height: 1.0;
+  color: rgba(248, 245, 255, 0.88);
+  text-transform: uppercase;
+  margin: 0 0 clamp(8px, 1.4vh, 18px) 0;
+  will-change: transform, opacity;
+}
+
+.cooking-word-cooking-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* "COOKING" */
+.cooking-word-cooking {
+  font-family: var(--font-sora);
+  font-weight: 700;
+  font-size: clamp(3.6rem, 9.2vw, 10.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+/* ── Physical soft steam rising around/above COOKING ────────── */
+.cooking-steam-container {
+  position: absolute;
+  inset: -90px -60px -20px -60px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.steam-plume {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(235, 225, 255, 0.09) 25%,
+    rgba(215, 205, 255, 0.04) 50%,
+    transparent 72%
+  );
+  will-change: transform, opacity;
+}
+
+.steam-plume.plume-1 {
+  width: 220px;
+  height: 240px;
+  top: -60px;
+  left: 18%;
+}
+
+.steam-plume.plume-2 {
+  width: 280px;
+  height: 290px;
+  top: -100px;
+  left: 42%;
+}
+
+.steam-plume.plume-3 {
+  width: 210px;
+  height: 230px;
+  top: -50px;
+  right: 18%;
+}
+
+.steam-plume.plume-4 {
+  width: 320px;
+  height: 180px;
+  top: -20px;
+  left: 28%;
+}
+
+/* ── Tiny floating particles ────────────────────────────────── */
+.cooking-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(248, 245, 255, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(248, 245, 255, 0.9);
+  will-change: transform, opacity;
+}
+
+.particle.p1 { top: 20%; left: 22%; }
+.particle.p2 { top: 35%; left: 48%; width: 2.5px; height: 2.5px; }
+.particle.p3 { top: 15%; right: 28%; }
+.particle.p4 { top: 55%; left: 32%; }
+.particle.p5 { top: 40%; right: 38%; }
+.particle.p6 { top: 25%; right: 18%; }
+
+/* ─────────────────────────────────────────────────────────────────
+   RESPONSIVENESS
+───────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .steam-plume {
+    opacity: 0.85;
+  }
+}

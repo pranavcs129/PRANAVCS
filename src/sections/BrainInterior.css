@@ -1,0 +1,431 @@
+/* ─────────────────────────────────────────────────────────────────
+   BRAIN INTERIOR — CONTINUOUS INWARD CORTICAL JOURNEY
+   Authentic human brain cortical depth tunnel, organic 3D thoughts,
+   spontaneous CSE reality, climax overload, explosion & black silence.
+   Strictly Sora typography, pure GPU transform/opacity, zero UI HUD.
+───────────────────────────────────────────────────────────────── */
+
+.brain-interior-section {
+  position: relative;
+  width: 100%;
+  height: 500vh; /* Deliberate, buttery scroll journey through the interior */
+  background: #000000;
+  color: var(--off-white, #F6EFE3);
+  overflow: clip;
+  z-index: 16;
+}
+
+/* ── PINNED 3D STAGE ── */
+.brain-interior-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  overflow: hidden;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  user-select: none;
+}
+
+/* ── MASTER 3D CAMERA RIG ── */
+.interior-camera-rig {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* ── SHARED CORTICAL LAYER CONTAINER ── */
+.cortex-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 1: DISTANT BRAIN ABYSS (The vanishing core at the horizon)
+───────────────────────────────────────────────────────────────── */
+.brain-depth-far {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.cortex-far-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(85vw, 820px);
+  height: min(85vh, 820px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cortex-img-far {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mask-image: radial-gradient(circle at 50% 50%, black 25%, rgba(0, 0, 0, 0.65) 55%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 25%, rgba(0, 0, 0, 0.65) 55%, transparent 78%);
+}
+
+.cortex-far-aura {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(140, 100, 185, 0.22) 0%,
+    rgba(48, 22, 70, 0.08) 50%,
+    transparent 75%
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 2: MIDGROUND CORTICAL WALLS (Canyon tissue framing corridor)
+───────────────────────────────────────────────────────────────── */
+.brain-depth-mid {
+  z-index: 2;
+}
+
+.cortex-mid-left {
+  position: absolute;
+  left: -220px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(540px, 52vw, 840px);
+  height: clamp(540px, 52vw, 840px);
+  will-change: transform;
+}
+
+.cortex-img-mid-l {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 80% 50%;
+  mask-image: linear-gradient(to right, black 35%, rgba(0, 0, 0, 0.7) 65%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to right, black 35%, rgba(0, 0, 0, 0.7) 65%, transparent 95%);
+  filter: brightness(0.9) contrast(1.05);
+}
+
+.cortex-mid-right {
+  position: absolute;
+  right: -220px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(540px, 52vw, 840px);
+  height: clamp(540px, 52vw, 840px);
+  will-change: transform;
+}
+
+.cortex-img-mid-r {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 20% 50%;
+  mask-image: linear-gradient(to left, black 35%, rgba(0, 0, 0, 0.7) 65%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to left, black 35%, rgba(0, 0, 0, 0.7) 65%, transparent 95%);
+  filter: brightness(0.9) contrast(1.05);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 3: NEURAL VECTOR HIGHWAYS & SYNAPTIC NODES
+───────────────────────────────────────────────────────────────── */
+.neural-depth {
+  z-index: 3;
+}
+
+.interior-neural-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.synapse-node-glow {
+  filter: drop-shadow(0 0 5px #FFFBF0);
+  transition: opacity 0.3s ease;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 4: THOUGHTS AT 3D DEPTHS
+───────────────────────────────────────────────────────────────── */
+.thought-depth {
+  z-index: 5;
+}
+
+.thought-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  color: var(--off-white, #F6EFE3);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+}
+
+/* Depth & Hierarchy Styles */
+.depth-far {
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  font-weight: 400;
+  color: rgba(246, 239, 227, 0.52);
+  letter-spacing: 0.01em;
+}
+
+.depth-mid {
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  font-weight: 400;
+  color: rgba(246, 239, 227, 0.85);
+}
+
+.depth-near {
+  font-size: clamp(1.3rem, 2.5vw, 2.05rem);
+  font-weight: 500;
+  color: rgba(255, 250, 242, 0.96);
+  letter-spacing: -0.02em;
+}
+
+.depth-hero {
+  font-size: clamp(1.75rem, 3.8vw, 3.2rem);
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  text-shadow: 0 6px 28px rgba(0, 0, 0, 0.88);
+}
+
+.weight-medium {
+  font-weight: 500;
+}
+
+.weight-bold {
+  font-weight: 600;
+}
+
+/* Personality Color Tints (Subtle, Cinematic, Organic) */
+.tint-warm {
+  color: #FFECC7;
+  text-shadow: 0 0 20px rgba(255, 236, 199, 0.25), 0 4px 18px rgba(0, 0, 0, 0.8);
+}
+
+.tint-distract {
+  color: #FFE4B5;
+  text-shadow: 0 0 22px rgba(255, 228, 181, 0.22), 0 4px 18px rgba(0, 0, 0, 0.8);
+}
+
+.tint-shinchan {
+  color: #FFD8A8;
+  text-shadow: 0 0 30px rgba(255, 216, 168, 0.35), 0 6px 24px rgba(0, 0, 0, 0.85);
+}
+
+.tint-music {
+  color: #E8D8F8;
+  text-shadow: 0 0 22px rgba(232, 216, 248, 0.25), 0 4px 18px rgba(0, 0, 0, 0.8);
+}
+
+.tint-urgent {
+  color: #FFF0ED;
+  text-shadow: 0 0 24px rgba(255, 150, 130, 0.32), 0 4px 18px rgba(0, 0, 0, 0.8);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 5: NEAR CORTICAL FOLDS (Top & Bottom Archway)
+───────────────────────────────────────────────────────────────── */
+.brain-depth-near {
+  z-index: 4;
+}
+
+.cortex-near-top {
+  position: absolute;
+  top: -260px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(620px, 60vw, 920px);
+  height: clamp(380px, 38vh, 560px);
+  will-change: transform;
+}
+
+.cortex-img-near-t {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 85%;
+  mask-image: linear-gradient(to bottom, black 25%, rgba(0, 0, 0, 0.6) 60%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, black 25%, rgba(0, 0, 0, 0.6) 60%, transparent 95%);
+  filter: brightness(0.85) contrast(1.08);
+}
+
+.cortex-near-bottom {
+  position: absolute;
+  bottom: -260px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(620px, 60vw, 920px);
+  height: clamp(380px, 38vh, 560px);
+  will-change: transform;
+}
+
+.cortex-img-near-b {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  mask-image: linear-gradient(to top, black 25%, rgba(0, 0, 0, 0.6) 60%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to top, black 25%, rgba(0, 0, 0, 0.6) 60%, transparent 95%);
+  filter: brightness(0.85) contrast(1.08);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 6: FOREGROUND CORTICAL FOLDS (Rushing close past camera)
+───────────────────────────────────────────────────────────────── */
+.foreground-cortex {
+  z-index: 6;
+}
+
+.cortex-fg-left {
+  position: absolute;
+  left: -320px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(720px, 68vw, 1050px);
+  height: clamp(720px, 68vw, 1050px);
+  will-change: transform;
+}
+
+.cortex-img-fg-l {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 90% 50%;
+  mask-image: radial-gradient(circle at 10% 50%, black 40%, rgba(0, 0, 0, 0.6) 65%, transparent 88%);
+  -webkit-mask-image: radial-gradient(circle at 10% 50%, black 40%, rgba(0, 0, 0, 0.6) 65%, transparent 88%);
+}
+
+.cortex-fg-right {
+  position: absolute;
+  right: -320px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(720px, 68vw, 1050px);
+  height: clamp(720px, 68vw, 1050px);
+  will-change: transform;
+}
+
+.cortex-img-fg-r {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 10% 50%;
+  mask-image: radial-gradient(circle at 90% 50%, black 40%, rgba(0, 0, 0, 0.6) 65%, transparent 88%);
+  -webkit-mask-image: radial-gradient(circle at 90% 50%, black 40%, rgba(0, 0, 0, 0.6) 65%, transparent 88%);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   "I AM INSIDE." CONFIRMATION BADGE (0.0 to 8.0)
+───────────────────────────────────────────────────────────────── */
+.interior-inside-badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 20;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.inside-badge-title {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(2.4rem, 6.5vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--off-white, #F6EFE3);
+  margin: 0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.75);
+}
+
+.inside-badge-subtitle {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(186, 167, 208, 0.7);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SYSTEM OVERLOAD HERO (87.0 to 96.5)
+───────────────────────────────────────────────────────────────── */
+.interior-overload-layer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 25;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.interior-overload-title {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(2.6rem, 6.8vw, 5.4rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFF6E5;
+  margin: 0;
+  text-align: center;
+  text-shadow:
+    0 0 40px rgba(255, 220, 180, 0.45),
+    0 8px 32px rgba(0, 0, 0, 0.9);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   EXPLOSION FLASH & SILENCE BLACKOUT
+───────────────────────────────────────────────────────────────── */
+.interior-explosion-flash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 248, 235, 0.95) 0%,
+    rgba(190, 160, 220, 0.4) 45%,
+    transparent 80%
+  );
+  pointer-events: none;
+  opacity: 0;
+  z-index: 40;
+  will-change: opacity;
+}
+
+.interior-silence-blackout {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 50;
+  will-change: opacity;
+}

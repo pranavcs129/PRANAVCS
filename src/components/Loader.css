@@ -1,0 +1,42 @@
+/* Loader — full viewport, centered counter */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 clamp(28px, 5vw, 56px) clamp(28px, 5vw, 56px);
+  pointer-events: none;
+}
+
+.loader__counter-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+}
+
+/* The percentage number — very large, very light */
+.loader__counter {
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 8vw, 88px);
+  font-weight: 100;
+  letter-spacing: -0.04em;
+  color: var(--off-white);
+  /* Tabular nums so digits don't jump */
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+  display: inline-block;
+  text-align: right;
+}
+
+.loader__percent {
+  font-family: var(--font-sans);
+  font-size: clamp(12px, 2vw, 20px);
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  padding-bottom: 0.1em;
+}

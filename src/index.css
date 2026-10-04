@@ -1,0 +1,53 @@
+/* ─────────────────────────────────────────────────────────────────
+   FONTS — Space Mono (identity) & Sora (personal sentence)
+───────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────
+   GLOBAL RESET & BASE
+───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Identity typography — Space Mono */
+  font-family: "Space Mono", monospace;
+
+  /* Design tokens */
+  --black:      #000000;
+  --near-black: #090909;
+  --white:      #ffffff;
+  --off-white:  #f8f5ff;
+  --dim:        #4a4a4a;
+  --very-dim:   #222222;
+
+  /* Font roles */
+  --font-identity: "Space Mono", monospace;
+  --font-sans:     "Space Mono", monospace;
+  --font-sentence: "Sora", sans-serif;
+  --font-sora:     "Sora", sans-serif;
+}
+
+html {
+  background: var(--black);
+  color: var(--off-white);
+  font-family: var(--font-identity);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--black);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  overflow-x: hidden;
+}

@@ -1,0 +1,88 @@
+/* ─────────────────────────────────────────────────────────────────
+   BRAIN SHOWCASE — SECTION STYLES
+   Minimal, dark, cinematic presentation in normal page flow.
+───────────────────────────────────────────────────────────────── */
+
+.brain-showcase-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--black, #000000);
+  color: var(--off-white, #F6EFE3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.brain-showcase-inner {
+  position: relative;
+  width: min(92vw, 1000px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.brain-showcase-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.brain-showcase-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: rgba(246, 239, 227, 0.45);
+  text-transform: uppercase;
+}
+
+.brain-showcase-title {
+  font-family: var(--font-display, 'Sora', sans-serif);
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  color: var(--off-white, #F6EFE3);
+  margin: 0;
+  text-shadow: 0 0 30px rgba(246, 239, 227, 0.15);
+}
+
+.brain-showcase-stage {
+  position: relative;
+  width: min(88vw, 760px);
+  height: min(78vw, 670px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.brain-showcase-footer {
+  text-align: center;
+}
+
+.brain-showcase-coord {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: rgba(246, 239, 227, 0.35);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .brain-showcase-section {
+    padding: 4rem 1rem;
+    min-height: auto;
+  }
+
+  .brain-showcase-stage {
+    width: 94vw;
+    height: 94vw;
+  }
+}

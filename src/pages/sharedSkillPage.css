@@ -1,0 +1,142 @@
+/* ─────────────────────────────────────────────────────────────────
+   SHARED SKILL PAGE SYSTEM
+   Maintains the Sora typography, dark palette, and cinematic atmosphere
+───────────────────────────────────────────────────────────────── */
+
+.skill-page {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background: #050208;
+  color: var(--off-white, #f8f5ff);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Atmospheric subtle ambient lighting */
+.skill-page__atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 25%,
+    rgba(68, 36, 100, 0.12) 0%,
+    rgba(26, 11, 42, 0.06) 45%,
+    transparent 80%
+  );
+  z-index: 0;
+}
+
+/* Top Navigation Bar */
+.skill-page__nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: clamp(20px, 3vh, 36px) clamp(20px, 4vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(5, 2, 8, 0.92) 0%, rgba(5, 2, 8, 0.6) 80%, transparent 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.skill-back-btn {
+  background: transparent;
+  border: 1px solid rgba(220, 205, 190, 0.18);
+  border-radius: 999px;
+  color: rgba(220, 205, 190, 0.72);
+  padding: 8px 18px;
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-back-btn:hover {
+  color: #fff;
+  border-color: rgba(220, 205, 190, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(-3px);
+  box-shadow: 0 0 16px rgba(220, 205, 190, 0.12);
+}
+
+.skill-back-btn .back-arrow {
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+.skill-back-btn:hover .back-arrow {
+  transform: translateX(-2px);
+}
+
+.skill-nav-tag {
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(220, 205, 190, 0.42);
+}
+
+/* Page Main Container */
+.skill-page__main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(10px, 2vh, 24px) clamp(20px, 4vw, 48px) clamp(60px, 8vh, 100px) clamp(20px, 4vw, 48px);
+  flex: 1;
+}
+
+/* Editorial Hero Header */
+.skill-hero {
+  margin-bottom: clamp(32px, 6vh, 64px);
+  max-width: 900px;
+}
+
+.skill-hero__label {
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(220, 205, 190, 0.5);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.skill-hero__title {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+  color: var(--off-white, #f8f5ff);
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+}
+
+.skill-hero__statement {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(220, 205, 190, 0.85);
+  margin: 0;
+  max-width: 720px;
+}

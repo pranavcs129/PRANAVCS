@@ -1,0 +1,252 @@
+@import './sharedSkillPage.css';
+
+.editing-experience {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vh, 70px);
+}
+
+/* Timeline Stage Console */
+.timeline-console {
+  border-radius: 16px;
+  background: rgba(14, 10, 18, 0.7);
+  border: 1px solid rgba(220, 205, 190, 0.16);
+  padding: clamp(20px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+}
+
+/* Master Timecode Bar */
+.timecode-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(220, 205, 190, 0.1);
+}
+
+.tc-readout {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.tc-label {
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(220, 205, 190, 0.5);
+  text-transform: uppercase;
+}
+
+.tc-digits {
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--off-white, #f8f5ff);
+}
+
+.tc-meta {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(220, 205, 190, 0.65);
+}
+
+.tc-badge {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(220, 205, 190, 0.15);
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+
+/* Timeline Visualization */
+.timeline-tracks-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0 10px 0;
+}
+
+/* Time Ruler */
+.time-ruler {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(220, 205, 190, 0.35);
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+
+/* Individual Track Lanes */
+.timeline-track-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 38px;
+}
+
+.track-identifier {
+  width: 70px;
+  flex-shrink: 0;
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(220, 205, 190, 0.55);
+}
+
+.track-lane {
+  flex: 1;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(220, 205, 190, 0.08);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-clip-block {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  position: relative;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.timeline-clip-block:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
+}
+
+.clip--v1 {
+  width: 42%;
+  background: rgba(184, 174, 160, 0.25);
+  border-left: 3px solid rgba(220, 205, 190, 0.85);
+  color: #fff;
+}
+
+.clip--v2 {
+  width: 35%;
+  background: rgba(140, 110, 180, 0.25);
+  border-left: 3px solid rgba(180, 150, 220, 0.85);
+  color: #f0e6ff;
+}
+
+.clip--v3 {
+  width: 23%;
+  background: rgba(100, 160, 140, 0.22);
+  border-left: 3px solid rgba(120, 200, 175, 0.85);
+  color: #e0f6f0;
+}
+
+.clip--a1 {
+  width: 65%;
+  background: rgba(184, 174, 160, 0.16);
+  border-left: 3px solid rgba(220, 205, 190, 0.5);
+  color: rgba(220, 205, 190, 0.8);
+}
+
+.clip--a2 {
+  width: 35%;
+  background: rgba(160, 140, 200, 0.16);
+  border-left: 3px solid rgba(180, 150, 220, 0.6);
+  color: rgba(220, 205, 190, 0.8);
+}
+
+/* Playhead Needle Overlay */
+.timeline-playhead-line {
+  position: absolute;
+  top: 36px;
+  bottom: 0;
+  left: 54%;
+  width: 2px;
+  background: #ff4d5a;
+  box-shadow: 0 0 10px rgba(255, 77, 90, 0.9);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.playhead-marker {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #ff4d5a;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* Editing Philosophy Principles */
+.editing-philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+@media (max-width: 800px) {
+  .editing-philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.editing-card {
+  background: rgba(14, 10, 18, 0.45);
+  border: 1px solid rgba(220, 205, 190, 0.12);
+  border-radius: 12px;
+  padding: clamp(20px, 2.5vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.editing-card:hover {
+  border-color: rgba(220, 205, 190, 0.3);
+  transform: translateY(-3px);
+}
+
+.editing-card__tag {
+  font-family: var(--font-identity, 'Space Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(220, 205, 190, 0.45);
+}
+
+.editing-card__heading {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--off-white, #f8f5ff);
+  margin: 0;
+}
+
+.editing-card__desc {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(220, 205, 190, 0.72);
+  margin: 0;
+}

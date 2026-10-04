@@ -1,0 +1,50 @@
+/* Intro section — tall, centered, minimal */
+.intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 clamp(28px, 8vw, 120px);
+}
+
+.intro__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2.5vh, 28px);
+}
+
+/* "So…" — intimate, quiet */
+.intro__hook {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18px, 3vw, 36px);
+  color: var(--dim);
+  letter-spacing: 0.04em;
+  /* Start invisible — GSAP animates in */
+  opacity: 0;
+}
+
+/* "Who is this guy?" — the real question */
+.intro__question {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(32px, 6.5vw, 90px);
+  color: var(--off-white);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  /* Start invisible — GSAP animates in */
+  opacity: 0;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .intro {
+    padding: 0 clamp(20px, 6vw, 40px);
+    align-items: flex-start;
+    padding-top: 30vh;
+  }
+}

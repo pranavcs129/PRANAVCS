@@ -1,0 +1,901 @@
+/* ─────────────────────────────────────────────────────────────────
+   WHO IS THIS GUY? — LIVING TYPOGRAPHIC COLLAGE WITH FOLDTEXT & MAGNET
+   - Editorial Palette: Warm creamy typography (#F6EFE3 title, #F0E7D8 lines, #B8AEA0 details).
+   - "WHO IS THIS GUY?" is permanently crisp, sharp, #F6EFE3 visual anchor.
+   - Active scroll moments: Active phrase receives soft warm cream spotlight (subtle glow, brightness, scale 1.02),
+     while other phrases remain quietly visible at 0.70-0.85 opacity.
+   - REAL BUG PHOTOGRAPH in FULL ORIGINAL COLORS behind TAKES PHOTOS OF BUGS (feathered edges, localized halo, never fades away).
+   - Stronger, desynchronized organic floating inertia (~5.5s–7.0s, ±5–8px).
+   - Magnet on ALL five identity elements with layered visual depth (text 3–8px, visual 1–3px).
+───────────────────────────────────────────────────────────────── */
+
+.who-section {
+  position: relative;
+  width: 100%;
+  height: 600vh;
+  z-index: 10;
+  background: #000000;
+  color: #F0E7D8;
+  overflow: clip;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PINNED STAGE
+───────────────────────────────────────────────────────────────── */
+.who-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   UNIFIED TYPOGRAPHIC CANVAS
+   Single relative-positioned editorial space with controlled asymmetry.
+───────────────────────────────────────────────────────────────── */
+.who-canvas {
+  position: relative;
+  width: min(92vw, 1400px);
+  height: min(86vh, 860px);
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   ANCHOR: SO... + FOLDTEXT (WHO IS THIS GUY?)
+   Permanently sharp, high contrast, warm creamy #F6EFE3. No blur, no haze.
+───────────────────────────────────────────────────────────────── */
+.who-title-anchor {
+  position: absolute;
+  top: 2%;
+  left: 3%;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.who-phrase-so {
+  font-family: var(--font-identity);
+  font-size: clamp(0.85rem, 1.2vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 231, 216, 0.55);
+  margin-bottom: clamp(6px, 1.2vh, 14px);
+  will-change: opacity;
+}
+
+.who-fold-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 0.92;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Enforce Sora 600 warm creamy editorial typography on FoldText */
+.who-is-this-fold {
+  font-family: 'Sora', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 0.95 !important;
+  text-transform: uppercase;
+  color: #F6EFE3 !important;
+  filter: none !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BASE PHRASE TOKEN & FLOAT WRAPPERS
+───────────────────────────────────────────────────────────────── */
+.who-phrase {
+  position: absolute;
+  font-family: var(--font-sora);
+  color: #F0E7D8;
+  white-space: nowrap;
+  will-change: transform, opacity, filter;
+  transform-origin: center left;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto;
+  cursor: default;
+  transition: opacity 0.45s ease;
+}
+
+/* Ensure the active phrase wrapper itself hits 100% opacity */
+.who-phrase.who-phrase--active {
+  opacity: 1 !important;
+}
+
+/* Magnet wrapper around each of the 5 identity phrases */
+.who-line-magnet-wrap {
+  display: inline-block !important;
+  position: relative !important;
+  pointer-events: auto;
+}
+
+/* Inner float wrapper: receives scroll-induced inertia and settling */
+.who-float {
+  display: inline-block;
+  position: relative;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Ambient continuous slow breathing wrapper (independent of scroll settling) */
+.who-ambient {
+  display: inline-block;
+  position: relative;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.who-line-text {
+  font-family: var(--font-sora);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4.3vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: #F0E7D8;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  transform-origin: left center;
+  text-shadow: 0 0 0 transparent;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              text-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.4s ease;
+}
+
+/* Supporting visual marker for Magnet secondary parallax */
+.who-magnet-visual {
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   ACTIVE SPOTLIGHT STATE (During element's scroll moment)
+   Clearly visible, soft diffused warm cream illumination.
+   Editorial, photographic, warm paper aesthetic. No neon, no RGB.
+───────────────────────────────────────────────────────────────── */
+.who-phrase--active .who-line-text {
+  opacity: 1 !important;
+  color: #F6EFE3;
+  transform: scale(1.025);
+  filter: brightness(1.14);
+  text-shadow: 0 0 12px rgba(246, 239, 227, 0.22),
+               0 0 28px rgba(246, 239, 227, 0.14),
+               0 0 55px rgba(246, 239, 227, 0.07);
+}
+
+.who-phrase--active .who-bugs-prefix {
+  color: #F6EFE3;
+  text-shadow: 0 0 12px rgba(246, 239, 227, 0.22),
+               0 0 28px rgba(246, 239, 227, 0.14),
+               0 0 55px rgba(246, 239, 227, 0.07);
+}
+
+.who-phrase--active .who-bugs-word {
+  color: #F6EFE3;
+  text-shadow: 0 0 12px rgba(246, 239, 227, 0.25),
+               0 0 28px rgba(246, 239, 227, 0.16),
+               0 0 55px rgba(246, 239, 227, 0.08);
+}
+
+.who-phrase--active .who-still-lead {
+  opacity: 0.95;
+  color: #F6EFE3;
+  filter: brightness(1.12);
+  text-shadow: 0 0 12px rgba(246, 239, 227, 0.20),
+               0 0 28px rgba(246, 239, 227, 0.12),
+               0 0 55px rgba(246, 239, 227, 0.06);
+}
+
+.who-phrase--active .who-shinchan-title {
+  opacity: 1 !important;
+  color: #F6EFE3;
+  transform: scale(1.025);
+  filter: brightness(1.14);
+  text-shadow: 0 0 12px rgba(246, 239, 227, 0.22),
+               0 0 28px rgba(246, 239, 227, 0.14),
+               0 0 55px rgba(246, 239, 227, 0.07);
+}
+
+.who-phrase--active .who-shinchan-dot {
+  color: #F6EFE3;
+  text-shadow: 0 0 12px rgba(246, 239, 227, 0.35),
+               0 0 24px rgba(246, 239, 227, 0.20);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LINE 1: MAKES WEBSITES & MINI BROWSER DETAIL
+───────────────────────────────────────────────────────────────── */
+.who-phrase-websites {
+  top: 22%;
+  left: 42%;
+  z-index: 7;
+}
+
+/* Abstract browser window: embedded artifact behind MAKES WEBSITES */
+.who-browser-easter {
+  position: absolute;
+  top: -34px;
+  left: -22px;
+  right: -22px;
+  bottom: -28px;
+  border: 1px solid rgba(184, 174, 160, 0.28);
+  border-radius: 6px;
+  background: rgba(18, 14, 22, 0.75);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.06;
+  z-index: 0;
+  will-change: transform, opacity;
+  transform-origin: left top;
+  transition: opacity 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.who-phrase--active .who-browser-easter {
+  opacity: 0.82;
+  border-color: rgba(246, 239, 227, 0.48);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), 0 0 32px rgba(246, 239, 227, 0.16);
+  filter: brightness(1.15);
+}
+
+.who-browser-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px 6px;
+  background: rgba(255, 255, 255, 0.035);
+  border-bottom: 1px solid rgba(184, 174, 160, 0.16);
+}
+
+.who-b-dots {
+  display: flex;
+  align-items: center;
+  gap: 4.5px;
+}
+
+.who-b-dot {
+  width: 5.5px;
+  height: 5.5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.who-b-dot--red    { background: rgba(255, 95, 86, 0.85); box-shadow: 0 0 4px rgba(255, 95, 86, 0.4); }
+.who-b-dot--yellow { background: rgba(255, 189, 46, 0.85); box-shadow: 0 0 4px rgba(255, 189, 46, 0.4); }
+.who-b-dot--green  { background: rgba(39, 201, 63, 0.85); box-shadow: 0 0 4px rgba(39, 201, 63, 0.4); }
+
+.who-b-address {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(184, 174, 160, 0.16);
+  border-radius: 3px;
+  padding: 0 7px;
+  font-family: var(--font-identity);
+  font-size: 8px;
+  color: #B8AEA0;
+}
+
+.who-b-lock {
+  font-size: 7.5px;
+  opacity: 0.7;
+}
+
+.who-b-url {
+  color: #B8AEA0;
+}
+
+.who-b-viewport {
+  margin-left: auto;
+  font-family: var(--font-identity);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: rgba(184, 174, 160, 0.60);
+}
+
+.who-browser-body {
+  position: relative;
+  padding: 11px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.who-b-wire-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.who-b-wire-logo {
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(184, 174, 160, 0.38);
+}
+
+.who-b-wire-nav {
+  display: flex;
+  gap: 5px;
+}
+
+.who-b-wire-pill {
+  width: 16px;
+  height: 3px;
+  border-radius: 1.5px;
+  background: rgba(184, 174, 160, 0.24);
+}
+
+.who-b-wire-hero {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.who-b-wire-title {
+  width: 58%;
+  height: 5px;
+  border-radius: 2px;
+  background: rgba(184, 174, 160, 0.32);
+}
+
+.who-b-wire-desc {
+  width: 40%;
+  height: 3px;
+  border-radius: 1.5px;
+  background: rgba(184, 174, 160, 0.20);
+}
+
+.who-b-cursor {
+  position: absolute;
+  bottom: 8px;
+  right: 26px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LINE 2: EDITS VIDEOS & TIMELINE DETAIL
+───────────────────────────────────────────────────────────────── */
+.who-phrase-videos {
+  top: 38%;
+  left: 7%;
+  z-index: 7;
+}
+
+.who-timeline-easter {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  width: clamp(240px, 33vw, 440px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.06;
+  will-change: transform, opacity;
+  transform-origin: left center;
+  transition: opacity 0.45s ease, filter 0.45s ease;
+}
+
+.who-phrase--active .who-timeline-easter {
+  opacity: 0.84;
+  filter: brightness(1.15);
+}
+
+.who-phrase--active .who-tl-board {
+  border-color: rgba(246, 239, 227, 0.42);
+  box-shadow: 0 0 20px rgba(246, 239, 227, 0.10);
+}
+
+.who-phrase--active .who-tl-playhead {
+  box-shadow: 0 0 16px rgba(246, 239, 227, 0.95), 0 0 30px rgba(246, 239, 227, 0.4);
+}
+
+.who-phrase--active .who-tl-rec {
+  color: #FF5F56;
+  text-shadow: 0 0 8px rgba(255, 95, 86, 0.7);
+}
+
+.who-phrase--active .who-tl-tc {
+  color: #F6EFE3;
+}
+
+.who-tl-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-family: var(--font-identity);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: #B8AEA0;
+}
+
+.who-tl-rec {
+  color: rgba(255, 95, 86, 0.85);
+  font-weight: 700;
+}
+
+.who-tl-tc {
+  color: #B8AEA0;
+}
+
+.who-tl-board {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(184, 174, 160, 0.18);
+  border-radius: 3px;
+  padding: 4px;
+  transition: border-color 0.45s ease;
+}
+
+.who-tl-lane {
+  position: relative;
+  height: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+  margin-bottom: 3px;
+  overflow: hidden;
+}
+
+.who-tl-lane--a1 {
+  height: 7px;
+  margin-bottom: 0;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.who-tl-clip {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.who-tl-clip--a {
+  background: rgba(184, 174, 160, 0.28);
+  border-left: 2px solid rgba(184, 174, 160, 0.65);
+}
+
+.who-tl-clip--b {
+  background: rgba(180, 160, 240, 0.28);
+  border-left: 2px solid rgba(180, 160, 240, 0.6);
+}
+
+.who-tl-clip--c {
+  background: rgba(120, 200, 180, 0.25);
+  border-left: 2px solid rgba(120, 200, 180, 0.6);
+}
+
+.who-tl-clip--aud {
+  background: rgba(184, 174, 160, 0.16);
+  border-left: 1.5px solid rgba(184, 174, 160, 0.38);
+}
+
+.who-tl-label {
+  font-family: var(--font-identity);
+  font-size: 6.5px;
+  letter-spacing: 0.05em;
+  color: #F0E7D8;
+}
+
+.who-tl-playhead {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 1.5px;
+  background: #F6EFE3;
+  box-shadow: 0 0 8px rgba(246, 239, 227, 0.7);
+  pointer-events: none;
+  z-index: 4;
+  transition: box-shadow 0.45s ease;
+}
+
+.who-tl-needle {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 5px;
+  background: #F6EFE3;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.who-tl-wire {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LINE 3: TAKES PHOTOS OF BUGS & RECOGNIZABLE MACRO PHOTOGRAPH
+   The REAL bug photograph exists ONLY behind TAKES PHOTOS OF BUGS
+   in its FULL ORIGINAL NATURAL COLORS (no grayscale, no sepia).
+   Layer order: Background -> Real Insect -> Glow -> Feathered Photo Layer -> Text.
+───────────────────────────────────────────────────────────────── */
+.who-phrase-bugs {
+  top: 54%;
+  left: 35%;
+  z-index: 8;
+}
+
+.who-bugs-heading {
+  position: relative;
+  z-index: 5;
+  color: #F0E7D8;
+}
+
+.who-bugs-prefix {
+  font-weight: 500;
+  color: rgba(240, 231, 216, 0.82);
+}
+
+.who-bugs-word {
+  font-weight: 700;
+  color: #F6EFE3;
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Background bug photo container: tightly centered behind TAKES PHOTOS OF BUGS */
+.who-bug-photo-wrap {
+  position: absolute;
+  top: calc(50% - clamp(35px, 4.5vw, 55px));
+  left: 50%;
+  translate: -50% -50%;
+  width: clamp(380px, 34vw, 540px);
+  height: clamp(200px, 20vw, 290px);
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Hidden before BUGS moment; driven by GSAP timeline */
+  will-change: transform, opacity;
+}
+
+/* Layer 1: Real bug / insect image emerging from behind */
+.who-bug-insect-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0; /* Hidden initially; revealed by GSAP timeline */
+  will-change: transform, opacity;
+  mask-image: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    #000000 24%,
+    rgba(0, 0, 0, 0.70) 48%,
+    rgba(0, 0, 0, 0.20) 68%,
+    transparent 82%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    #000000 24%,
+    rgba(0, 0, 0, 0.70) 48%,
+    rgba(0, 0, 0, 0.20) 68%,
+    transparent 82%
+  );
+}
+
+.who-bug-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  /* Original natural photographic colors - no grayscale, no desaturate, no recoloring */
+  filter: brightness(1.02) contrast(1.04);
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, filter;
+  transition: filter 0.45s ease;
+}
+
+.who-phrase--active .who-bug-photo-img {
+  filter: brightness(1.15) contrast(1.06);
+}
+
+/* Layer 2: Soft photographic halo glow */
+.who-bug-local-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 104%;
+  height: 94%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse 56% 48% at 50% 50%,
+    rgba(246, 239, 227, 0.20) 0%,
+    rgba(240, 230, 215, 0.10) 25%,
+    rgba(220, 210, 195, 0.03) 50%,
+    transparent 72%
+  );
+  pointer-events: none;
+  opacity: 0; /* Driven by GSAP timeline */
+  z-index: 2;
+  will-change: opacity;
+}
+
+/* Layer 3: Feathered photograph aperture / window layer */
+.who-bug-plate-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0; /* Driven by GSAP timeline */
+  will-change: opacity;
+  mask-image: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    #000000 20%,
+    rgba(0, 0, 0, 0.65) 45%,
+    rgba(0, 0, 0, 0.15) 65%,
+    transparent 80%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    #000000 20%,
+    rgba(0, 0, 0, 0.65) 45%,
+    rgba(0, 0, 0, 0.15) 65%,
+    transparent 80%
+  );
+}
+
+.who-bug-plate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  filter: brightness(0.92) contrast(1.02);
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LINE 4: WATCHES MOVIES & CINEMATIC CROP
+───────────────────────────────────────────────────────────────── */
+.who-phrase-movies {
+  top: 70%;
+  left: 9%;
+  z-index: 7;
+}
+
+.who-cinema-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.who-line-movies {
+  letter-spacing: 0.025em;
+  padding: 6px 0;
+  color: #F0E7D8;
+}
+
+/* Subtle cinematic crop framing */
+.who-cinema-easter {
+  position: absolute;
+  inset: -8px -18px;
+  pointer-events: none;
+  opacity: 0.05;
+  will-change: transform, opacity;
+  transform-origin: left center;
+  transition: opacity 0.45s ease, filter 0.45s ease;
+}
+
+.who-phrase--active .who-cinema-easter {
+  opacity: 0.82;
+  filter: brightness(1.15);
+}
+
+.who-cinema-crop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.who-cinema-crop--top {
+  top: 0;
+}
+
+.who-cinema-crop--bottom {
+  bottom: 0;
+}
+
+.who-cinema-rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(184, 174, 160, 0.28);
+  transition: background 0.45s ease;
+}
+
+.who-phrase--active .who-cinema-rule {
+  background: rgba(246, 239, 227, 0.60);
+  box-shadow: 0 0 8px rgba(246, 239, 227, 0.30);
+}
+
+.who-cinema-badge,
+.who-cinema-fps {
+  font-family: var(--font-identity);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: #B8AEA0;
+}
+
+.who-phrase--active .who-cinema-badge,
+.who-phrase--active .who-cinema-fps {
+  color: #F6EFE3;
+  text-shadow: 0 0 8px rgba(246, 239, 227, 0.25);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LINE 5: AND STILL WATCHES SHIN CHAN.
+───────────────────────────────────────────────────────────────── */
+.who-phrase-shinchan {
+  top: 84%;
+  left: 38%;
+  z-index: 9;
+}
+
+.who-shin-composite {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(10px, 1.8vw, 24px);
+  flex-wrap: nowrap;
+}
+
+.who-still-lead {
+  font-family: var(--font-sora);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2.0vw, 2.0rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(240, 231, 216, 0.70);
+  white-space: nowrap;
+  will-change: opacity, transform;
+}
+
+.who-shinchan-title {
+  font-family: var(--font-sora);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 5.0vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: #F0E7D8;
+  margin: 0;
+  display: inline-block;
+  will-change: transform, opacity, filter, text-shadow;
+  transition: color 0.45s ease, filter 0.45s ease, text-shadow 0.45s ease, transform 0.45s ease;
+}
+
+.who-shinchan-dot {
+  color: #F6EFE3;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   ANYWAY... BRIDGE
+───────────────────────────────────────────────────────────────── */
+.who-phrase-anyway {
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+  font-family: var(--font-identity);
+  font-size: clamp(0.95rem, 1.3vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 231, 216, 0.60);
+  pointer-events: none;
+  z-index: 5;
+  will-change: transform, opacity;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   MOBILE RESPONSIVENESS (< 768px)
+───────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .who-section {
+    height: 520vh;
+  }
+
+  .who-canvas {
+    width: 90vw;
+    height: 90vh;
+  }
+
+  .who-title-anchor {
+    top: 2%;
+    left: 2%;
+  }
+
+  .who-phrase-websites {
+    top: 20%;
+    left: 2%;
+  }
+
+  .who-browser-easter {
+    top: -24px;
+    left: -12px;
+    right: -12px;
+    bottom: -18px;
+  }
+
+  .who-phrase-videos {
+    top: 35%;
+    left: 2%;
+  }
+
+  .who-timeline-easter {
+    width: 82vw;
+  }
+
+  .who-phrase-bugs {
+    top: 50%;
+    left: 2%;
+  }
+
+  .who-bug-photo-wrap {
+    width: 84vw;
+    height: 180px;
+  }
+
+  .who-phrase-movies {
+    top: 66%;
+    left: 2%;
+  }
+
+  .who-phrase-shinchan {
+    top: 80%;
+    left: 2%;
+  }
+
+  .who-shin-composite {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .who-line-text {
+    font-size: clamp(1.8rem, 6.5vw, 2.8rem);
+  }
+
+  .who-shinchan-title {
+    font-size: clamp(2.0rem, 7.5vw, 3.2rem);
+  }
+}

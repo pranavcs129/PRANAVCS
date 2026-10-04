@@ -1,0 +1,737 @@
+/* ─────────────────────────────────────────────────────────────────
+   BRAIN ENTRY — LIVING NEURAL NETWORK & MEMORY ODYSSEY
+   High-performance 60fps implementation:
+   - Zero expensive CSS blur or drop-shadow filters during scroll scrub.
+   - GPU transform-based movement (translate3d, scale).
+   - Multi-layer neural camera flight (far, mid, fore).
+   - Natural, organic thought emergence and drift.
+   - Memory Collapse into tight central cluster.
+   - Memory Explosion: screen fills with 3 depth tiers of memories.
+   - Memory Highlight: 7 important memories clearly isolated.
+   - Final release outward flight into silent calm darkness.
+───────────────────────────────────────────────────────────────── */
+
+.brain-entry-section {
+  position: relative;
+  width: 100%;
+  height: 1250vh; /* Deliberate, generous scroll distance (ONE continuous pinned journey into Bento) */
+  background: #050208;
+  color: var(--off-white, #F6EFE3);
+  overflow: clip;
+  z-index: 15;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PINNED STAGE (Fixed viewport camera lens)
+───────────────────────────────────────────────────────────────── */
+.brain-entry-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050208;
+  overflow: hidden;
+  user-select: none;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   MASTER CAMERA / JOURNEY WRAPPER (.brain-journey)
+───────────────────────────────────────────────────────────────── */
+.brain-journey {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ── BIOLOGICAL TISSUE ATMOSPHERE BACKGROUND (Subtle deep purple void) ── */
+.brain-journey-atmosphere {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(68, 36, 100, 0.28) 0%,
+    rgba(26, 11, 42, 0.12) 55%,
+    #050208 90%
+  );
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* ── MASTER CAMERA RIG (Carries Depth Layers Forward) ── */
+.brain-camera-rig {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 1: CURRENTLY COOKING IN DEPTH SPACE
+───────────────────────────────────────────────────────────────── */
+.currently-cooking-depth {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 2: AUTHENTIC BRAIN IN DEPTH SPACE (Optimized for 60fps)
+───────────────────────────────────────────────────────────────── */
+.brain-depth {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+}
+
+.brain-inner-wrap {
+  width: min(85vw, 920px);
+  height: min(85vh, 800px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 3: THE LIVING BIOLOGICAL NEURAL NETWORK ENVIRONMENT
+   A dense, layered microscopic neural environment:
+   - neural-plane-far: dense background neuropil mesh, capillary fibers, distant somas
+   - neural-plane-mid: primary biological multipolar neurons, arborized dendrites, axons
+   - neural-plane-fore: massive foreground dendrite trunks and axons sweeping past camera
+───────────────────────────────────────────────────────────────── */
+.neural-network-world {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 6;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: opacity;
+}
+
+.neural-plane {
+  position: absolute;
+  inset: -15%;
+  width: 130%;
+  height: 130%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* 3A: Far Neuropil Mesh (Dense background web of micro-fibers & distant somas) */
+.neural-plane-far {
+  z-index: 1;
+  opacity: 0.55;
+}
+
+/* 3B: Midground Biological Neural Network (Primary multipolar neurons & axons) */
+.neural-plane-mid {
+  z-index: 2;
+}
+
+/* 3C: Foreground Giant Biological Structures (Gliding close past the camera lens) */
+.neural-plane-fore {
+  z-index: 4;
+  opacity: 0.65;
+}
+
+/* 3D: Micro-Foreground (Vesicles & bio-luminescent micro-signals) */
+.neural-plane-micro {
+  z-index: 5;
+  opacity: 0.75;
+}
+
+/* ── BIOLOGICAL NEURON SOMA & SYNAPSE STYLES (Zero expensive filters) ── */
+.soma-halo-organic {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.neuron-soma-organic {
+  transform-origin: center center;
+  will-change: transform, fill;
+}
+
+.synapse-bouton {
+  transform-origin: center center;
+  will-change: transform, fill;
+}
+
+.signal-pulse {
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.synapse-spark {
+  opacity: 0.55;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 4: MODERN EDITORIAL WARNING INTERRUPTIONS
+───────────────────────────────────────────────────────────────── */
+.brain-editorial-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.brain-editorial-item {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.brain-editorial-text {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  color: var(--off-white, #F6EFE3);
+  margin: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+}
+
+.editorial-pos-lower-left {
+  bottom: 24%;
+  left: 12%;
+}
+
+.editorial-pos-above-center {
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.editorial-pos-mid-right {
+  top: 50%;
+  right: 14%;
+  transform: translateY(-50%);
+}
+
+.editorial-pos-lower-right {
+  bottom: 22%;
+  right: 14%;
+}
+
+.editorial-pos-center {
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-going-in {
+  font-size: clamp(1.4rem, 2.8vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #FFF6E5;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   "I AM INSIDE." MOMENT (Inside living neural world)
+───────────────────────────────────────────────────────────────── */
+.interior-inside-badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 22;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.inside-badge-title {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(2.2rem, 5.8vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--off-white, #F6EFE3);
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+}
+
+.inside-badge-subtitle {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(186, 167, 208, 0.75);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 5: THOUGHTS AT 3D DEPTHS (Organic, subtle, Sora font)
+   No cards. No UI borders. Pure internal thoughts inside the neural network.
+───────────────────────────────────────────────────────────────── */
+.interior-thoughts-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: 14;
+}
+
+.neural-thought {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  color: var(--off-white, #F6EFE3);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* Depth & Hierarchy Styles */
+.depth-far {
+  font-size: clamp(0.85rem, 1.25vw, 1.1rem);
+  font-weight: 400;
+  color: rgba(246, 239, 227, 0.55);
+  letter-spacing: 0.01em;
+}
+
+.depth-mid {
+  font-size: clamp(1.05rem, 1.85vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(246, 239, 227, 0.88);
+}
+
+.depth-near {
+  font-size: clamp(1.3rem, 2.5vw, 2.1rem);
+  font-weight: 500;
+  color: rgba(255, 250, 242, 0.98);
+  letter-spacing: -0.02em;
+}
+
+.depth-hero {
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.weight-medium {
+  font-weight: 500;
+}
+
+.weight-bold {
+  font-weight: 700;
+}
+
+/* Personality Color Tints */
+.tint-warm {
+  color: #FFECC7;
+}
+
+.tint-distract {
+  color: #FFE4B5;
+}
+
+.tint-shinchan {
+  color: #FFD8A8;
+}
+
+.tint-music {
+  color: #E8D8F8;
+}
+
+.tint-urgent {
+  color: #FFF0ED;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PHASE 4, 5 & 6: MEMORY COLLAPSE, EXPLOSION & MAGNETIC MEMORY FIELD
+   Grouped into 3 performant layers:
+   - memories-layer-bg: faint drifting background thoughts (opacity 0.2 - 0.35)
+   - memories-layer-mid: crisp, readable midground thoughts (opacity 0.55 - 0.75)
+   - memories-layer-hero: the 7 standout IMPORTANT MEMORIES
+───────────────────────────────────────────────────────────────── */
+.memories-explosion-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  z-index: 30;
+}
+
+.memories-layer-bg,
+.memories-layer-mid,
+.memories-layer-hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.memory-fragment {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  white-space: nowrap;
+  pointer-events: auto;
+  user-select: none;
+  cursor: default;
+  line-height: 1.15;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  will-change: transform;
+}
+
+/* Background Memory Tier (Normal reading size 13px - 15px) */
+.memory-bg {
+  font-size: clamp(0.75rem, 0.95vw, 0.92rem);
+  font-weight: 400;
+  color: rgba(220, 205, 235, 0.38);
+  letter-spacing: 0.01em;
+}
+
+/* Midground Memory Tier (Normal reading size 16px - 20px) */
+.memory-mid {
+  font-size: clamp(0.92rem, 1.2vw, 1.18rem);
+  font-weight: 450;
+  color: rgba(246, 239, 227, 0.78);
+  letter-spacing: -0.01em;
+}
+
+/* Foreground / Standout Memories (Normal reading size 20px - 26px max, slightly brighter/sharper) */
+.memory-hero {
+  font-size: clamp(1.15rem, 1.55vw, 1.55rem);
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 0 14px rgba(255, 235, 205, 0.4),
+    0 2px 10px rgba(0, 0, 0, 0.95);
+  will-change: transform;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 7: BOTTOM WARNING SYSTEM (Subtle, modern minimal typography)
+───────────────────────────────────────────────────────────────── */
+.brain-bottom-warning {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 28;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.bottom-warning-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(14, 8, 22, 0.85);
+  border: 1px solid rgba(142, 114, 184, 0.22);
+  border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.warning-indicator-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #E8D8F8;
+  box-shadow: 0 0 8px rgba(232, 216, 248, 0.9);
+  flex-shrink: 0;
+  animation: warningDotPulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes warningDotPulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(255, 235, 200, 1);
+  }
+}
+
+.warning-text-container {
+  position: relative;
+  height: 16px;
+  min-width: 205px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-warning-text {
+  position: absolute;
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(0.72rem, 0.9vw, 0.84rem);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: rgba(246, 239, 227, 0.65);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  will-change: opacity, transform;
+  text-align: center;
+}
+
+.bottom-warning-text.warning-overload {
+  color: #FFE0D6;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 120, 90, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 8: VERY SHORT BLACK SCREEN FLASH (Brain crash interruption before collapse)
+───────────────────────────────────────────────────────────────── */
+.interior-black-flash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 60;
+  will-change: opacity;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 9: SILENCE BLACKOUT (Final Transition Calm Hold)
+───────────────────────────────────────────────────────────────── */
+.interior-silence-blackout {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #050208;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 50;
+  will-change: opacity;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LAYER 10: THINGS I SOMEHOW KNOW (MagicBento + Immediate Thought Field)
+───────────────────────────────────────────────────────────────── */
+.brain-bento-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  user-select: none;
+  will-change: opacity;
+}
+
+.brain-bento-layer.is-active {
+  pointer-events: auto;
+}
+
+/* ── INNER BENTO CONTENT WRAPPER ── */
+.brain-bento-layer .things-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(16px, 3vw, 36px);
+}
+
+.brain-bento-layer .things-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto clamp(14px, 2.4vh, 30px) auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform, opacity;
+}
+
+.brain-bento-layer .things-tagline {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(220, 205, 190, 0.48);
+  margin-bottom: 6px;
+}
+
+.brain-bento-layer .things-title {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--off-white, #F6EFE3);
+  margin: 0 0 6px 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+
+.brain-bento-layer .things-supporting-line {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(0.92rem, 1.15vw, 1.12rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: rgba(220, 205, 190, 0.72);
+  margin: 0;
+}
+
+.brain-bento-layer .things-bento-container {
+  width: 100%;
+  position: relative;
+  z-index: 12;
+}
+
+/* ── THOUGHT FIELD & FALLING THOUGHTS ── */
+.brain-bento-layer .things-memory-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.falling-thought-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 28;
+}
+
+.falling-thought-trail {
+  position: absolute;
+  left: 50%;
+  bottom: 80%;
+  width: 2px;
+  height: 64px;
+  background: linear-gradient(to top, rgba(255, 248, 235, 0.8), rgba(255, 230, 200, 0.25), transparent);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: bottom center;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.falling-thought {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(1.15rem, 1.55vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #F0ECE1;
+  text-shadow:
+    0 0 16px rgba(255, 235, 205, 0.45),
+    0 2px 10px rgba(0, 0, 0, 0.95);
+  white-space: nowrap;
+  will-change: transform, opacity, color;
+  transform-origin: center center;
+  display: inline-block;
+  user-select: none;
+}
+
+.random-thought-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 22;
+}
+
+.random-thought {
+  font-family: var(--font-sora, 'Sora', sans-serif);
+  font-size: clamp(0.85rem, 1.15vw, 1.12rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(220, 205, 190, 0.68);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  white-space: nowrap;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  display: inline-block;
+  user-select: none;
+}
+
